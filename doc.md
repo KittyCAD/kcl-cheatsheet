@@ -1,12 +1,12 @@
 # Basics
 
 ```kcl
-var = value  
+myVariable = value  
 ```
 *Assign values to variables*
 
 ```kcl
-var = if cond {
+myVariable = if cond {
   value_if_true
 } else {
   value_if_false
@@ -17,7 +17,7 @@ var = if cond {
 ```kcl
 x |> f()
 ```
-*Equivalent to f(x)*
+*Equivalent to f(x) [book](https://zoo.dev/docs/kcl-book/pipelines.html)*
 
 ```kcl
 x |> f() |> g()
@@ -57,7 +57,7 @@ b | c
 ```kcl
 startSketchOn(XY)
 ```
-*Start sketch on a standard plane*
+*Start sketch on a standard plane [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-startSketchOn)*
 
 ```kcl
 startSketchOn(cube, face = myFace)
@@ -68,13 +68,13 @@ startSketchOn(cube, face = myFace)
 startSketchOn(XY)
 |> startProfile(at = [0, 0])
 ```
-*Start a profile in a sketch*
+*Start a profile in a sketch [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-startProfile)*
 
 ```kcl
 |> line(end = [3, 3])
 |> line(endAbsolute = [3, 3])
 ```
-*Add a line to a profile (relative distances, or end at an absolute point)*
+*Add a line to a profile (relative distances, or end at an absolute point) [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-line)*
 
 ```kcl
 |> line(end = [3, 3], tag = $myEdge)
@@ -84,38 +84,39 @@ startSketchOn(XY)
 ```kcl
 |> close()
 ```
-*Straight line return to start of sketch, closing it*
+*Straight line return to start of sketch, closing it [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-close)*
 
 ```kcl
 |> xLine(length = 3)
 |> xLine(endAbsolute = 3)
 ```
-*Add a horizontal line (relative distance, or end at an absolute point)*
+*Add a horizontal line (relative distance, or end at an absolute point) [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-xLine)*
 
 ```kcl
 |> yLine(length = 3)
 |> yLine(endAbsolute = 3)
 ```
-*Add a vertical line (relative distance, or end at an absolute point)*
+*Add a vertical line (relative distance, or end at an absolute point) [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-yLine)*
 
 ```kcl
 |> tangentialArc(end = [4, 3])
 |> tangentialArc(endAbsolute = [4, 3])
 ```
 *Circular arc that smoothly bends the given X and Y distances away,
-or smoothly bends to the given point*
+or smoothly bends to the given point [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-tangentialArc)*
 
 ```kcl
 |> circle(center = [4, 3], diameter = 4)
 |> circle(center = [4, 3], radius = 2)
 ```
-*Circle (automatically closes)*
+*Circle (automatically closes) [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-circle)*
+
 # Extrudes
 
 ```kcl
 mySketch |> extrude(length = 4)
 ```
-*Extrudes a 2D sketch into a 3D solid, with the given 3rd dimension length. [Book](https://zoo.dev/docs/kcl-book/sketch3d.html#extrude), [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-extrude)*
+*Extrudes a 2D sketch into a 3D solid, with the given 3rd dimension length. [book](https://zoo.dev/docs/kcl-book/sketch3d.html#extrude), [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-extrude)*
 
 ```kcl
 |> extrude(length = 4, twistAngle = 120deg)
@@ -193,12 +194,12 @@ mySketch |> extrude(length = 4)
 ```kcl
 sweep(mySketch, path = myPath)
 ```
-*Extrude but along the given path instead of a straight line. [Book](https://zoo.dev/docs/kcl-book/sketch3d.html#sweep), [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-sweep)*
+*Extrude but along the given path instead of a straight line. [book](https://zoo.dev/docs/kcl-book/sketch3d.html#sweep), [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-sweep)*
 
 ```kcl
 mySketch |> revolve(axis = Y)
 ```
-*Revolves a sketch 360 degrees around the given axis. [Book](https://zoo.dev/docs/kcl-book/sketch3d.html#revolve), [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-revolve)*
+*Revolves a sketch 360 degrees around the given axis. [book](https://zoo.dev/docs/kcl-book/sketch3d.html#revolve), [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-revolve)*
 
 ```kcl
 mySketch |> revolve(axis = Y, angle = 90deg)
@@ -208,7 +209,7 @@ mySketch |> revolve(axis = Y, angle = 90deg)
 ```kcl
 loft([sketch1, sketch2, sketch3])
 ```
-*Lifts sketches up into each other, interpolating the volume in between. [Book](https://zoo.dev/docs/kcl-book/sketch3d.html#lofts), [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-loft)*
+*Lifts sketches up into each other, interpolating the volume in between. [book](https://zoo.dev/docs/kcl-book/sketch3d.html#lofts), [docs](https://zoo.dev/docs/kcl-std/functions/std-sketch-loft)*
 
 ```kcl
 loft([sketch1, sketch2, sketch3], vDegree = 1)
@@ -232,13 +233,13 @@ loft([sketch1, sketch2, sketch3], vDegree = 1)
 |> translate(xyz = [10, 10, 2.5])
 |> translate(x = 10.0)
 ```
-*Translate the object in space, along 1-3 axes. [Book](https://zoo.dev/docs/kcl-book/transform_3d.html#translation), [docs](https://zoo.dev/docs/kcl-std/functions/std-transform-translate)*
+*Translate the object in space, along 1-3 axes. [book](https://zoo.dev/docs/kcl-book/transform_3d.html#translation), [docs](https://zoo.dev/docs/kcl-std/functions/std-transform-translate)*
 
 ```kcl
 |> scale(x = 0.5, y = 0.5, z = 2)
 |> scale(x = 0.5)
 ```
-*Scale the solid's size. 0.5 is half size, 2 is double size. [Book](https://zoo.dev/docs/kcl-book/transform_3d.html#scale), [docs](https://zoo.dev/docs/kcl-std/functions/std-transform-scale)*
+*Scale the solid's size. 0.5 is half size, 2 is double size. [book](https://zoo.dev/docs/kcl-book/transform_3d.html#scale), [docs](https://zoo.dev/docs/kcl-std/functions/std-transform-scale)*
 
 ```kcl
 |> rotate(roll = 45deg, pitch = 10deg, yaw = 5deg)
@@ -246,7 +247,7 @@ loft([sketch1, sketch2, sketch3], vDegree = 1)
 |> rotate(axis = Z, angle = 90deg)
 |> rotate(axis = [1, 1, 0], angle = 90deg)
 ```
-*Rotate the solid, giving 1-3 of roll/pitch/yaw, or an axis and angle. [Book](https://zoo.dev/docs/kcl-book/transform_3d.html#rotation), [docs](https://zoo.dev/docs/kcl-std/functions/std-transform-rotate)*
+*Rotate the solid, giving 1-3 of roll/pitch/yaw, or an axis and angle. [book](https://zoo.dev/docs/kcl-book/transform_3d.html#rotation), [docs](https://zoo.dev/docs/kcl-std/functions/std-transform-rotate)*
 
 ```kcl
 other = clone(cube) |> translate(x = 10)
@@ -258,12 +259,12 @@ other = clone(cube) |> translate(x = 10)
 ```kcl
 solid |> fillet(radius = 5, tags = [myEdge])
 ```
-*Rounded cut on the edge tagged $myEdge in the original sketch. [Book](https://zoo.dev/docs/kcl-book/tags.html#tagging-edges), [docs](https://zoo.dev/docs/kcl-std/functions/std-solid-fillet)*
+*Rounded cut on the edge tagged $myEdge in the original sketch. [book](https://zoo.dev/docs/kcl-book/tags.html#tagging-edges), [docs](https://zoo.dev/docs/kcl-std/functions/std-solid-fillet)*
 
 ```kcl
 chamfer(length = 5, tags = [myEdge])
 ```
-*Straight cut on the edge tagged $myEdge in the original sketch. [Book](https://zoo.dev/docs/kcl-book/tags.html#chamfers), [docs](https://zoo.dev/docs/kcl-std/functions/std-solid-chamfer)*
+*Straight cut on the edge tagged $myEdge in the original sketch. [book](https://zoo.dev/docs/kcl-book/tags.html#chamfers), [docs](https://zoo.dev/docs/kcl-std/functions/std-solid-chamfer)*
 
 ```kcl
 chamfer(length = 5, angle = 30deg, tags = [myEdge])
@@ -297,7 +298,7 @@ chamfer(length = 5, secondLength = 1, tags = [myEdge])
 ```kcl
 myPlane = offsetPlane(XY, offset = 20)
 ```
-*Define a new plane, offset from an existing one [Book](https://zoo.dev/docs/kcl-book/sketch_on_face.html#offset-planes), [docs](https://zoo.dev/docs/kcl-std/functions/std-offsetPlane)*
+*Define a new plane, offset from an existing one [book](https://zoo.dev/docs/kcl-book/sketch_on_face.html#offset-planes), [docs](https://zoo.dev/docs/kcl-std/functions/std-offsetPlane)*
 
 ```kcl
 myPlane = {
@@ -307,3 +308,4 @@ myPlane = {
 }
 ```
 *Manually define a new plane.*
+
