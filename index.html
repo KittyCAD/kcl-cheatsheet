@@ -54,6 +54,20 @@
         <code>squared = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-map">map</a>(myArr, fn(@x) { return x * x })</code>
         <code>sum = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-reduce">reduce</a>(<br>&#8194;&#8194;myArr,<br>&#8194;&#8194;initial = 0,<br>&#8194;&#8194;f = fn(@i, acc) {return i + acc}<br>) </code>
       </article>
+      <article>
+        <h2>Math</h2>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-sin">sin</a>(10deg), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-cos">cos</a>(1rad), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-tan">tan</a>(x)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-asin">asin</a>(10deg), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-acos">acos</a>(1rad), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-atan">atan</a>(x), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-atan2">atan2</a>(x)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-polar">polar</a>(angle = 9deg, length = 5)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-rem">rem</a>(7, divisor = 4)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-assert">assert</a>(x, isEqualTo = 3)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-sqrt">sqrt</a>(4)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-abs">abs</a>(-4)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-round">round</a>(4.1), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-floor">floor</a>(4.1), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-ceil">ceil</a>(4.1)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-min">min</a>([1, 2, 3]), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-max">max</a>([1, 2, 3])</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-pow">pow</a>(5, exp = 2), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-log">log</a>(100, base = 5)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-log10">log10</a>(100), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-log2">log2</a>(128), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-ln">ln</a>(100)</code>
+      </article>
     </section>
     <section>
       <article>
@@ -71,6 +85,7 @@
         <p>Other:</p>
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-circle">circle</a>(mySketch, center = [0, 0], diameter = 4)</code>
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-subtract2d">subtract2d</a>(mySketch, tool = holeShapeSketch)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-mirror2d">mirror2d</a>(unclosedPath, axis = Y)</code>
       </article>
       <article>
         <h2>2D to 3D</h2>
@@ -92,6 +107,7 @@
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-union">union</a>([mySolid, mySolid2])</code>
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-intersect">intersect</a>([solidA, solidB])</code>
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-subtract">subtract</a>(cube, tools = [myHole])</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-shell">shell</a>(cube, faces = [taggedFace], thickness = 1)</code>
       </article>
     </section>
     <section>
