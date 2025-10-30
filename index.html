@@ -24,8 +24,7 @@
         <h2>Syntax</h2>
         <code><a href="https://zoo.dev/docs/kcl-book/variables.html">var</a> = value;</code>
         <code><a href="">var</a> = if cond { value_if_true } else { value_if_false }</code>
-        <code><a href="https://zoo.dev/docs/kcl-book/declaring_functions.html#function-declaration">fn</a> myFunction(x) { return x }</code>
-        <code><a href="https://zoo.dev/docs/kcl-book/declaring_functions.html#function-declaration">fn</a> myFunction(x, y?) { return x }</code>
+        <code><a href="https://zoo.dev/docs/kcl-book/declaring_functions.html#function-declaration">fn</a> myFunction(@i, x, y?) { return x }</code>
         <code><a href="https://zoo.dev/docs/kcl-book/declaring_functions.html#function-declaration">fn</a> myFunction(x: string, y?: string) { return x }</code>
         <code>x <a href="https://zoo.dev/docs/kcl-book/pipelines.html">|></a> f() // Equivalent to f(x)</code>
         <code>x <a href="https://zoo.dev/docs/kcl-book/pipelines.html">|></a> f() |> g() // Equivalent to g(f(x))</code>
@@ -53,142 +52,90 @@
     <section>
       <article>
         <h2>2D</h2>
-        <code><a href="">circle</a>(radius | d=diameter)</code>
-        <code><a href="">square</a>(size,center)</code>
-        <code><a href="">square</a>([width,height],center)</code>
-        <code><a href="">polygon</a>([points])</code>
-        <code><a href="">polygon</a>([points],[paths])</code>
-        <code><a href="">text</a>(t, size, font,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;halign, valign, spacing,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction, language, script)</code>
-        <code><a href="">import</a>("&hellip;.<span class="tooltip">ext<span class="tooltiptext">formats: DXF|SVG</span></span>", convexity)</code>
-        <code><a href="">projection</a>(cut)</code>
+        <p>Start or extend a sketch</p>
+        <code><a href="">startSketchOn</a>(XZ)</code>
+        <code><a href="">startSketchOn</a>(mySolid, face = taggedFace)</code>
+        <code><a href="">startProfile</a>(at = [0, 0])</code>
+        <code><a href="">line</a>(mySketch, end = [x, y])</code>
+        <code><a href="">line</a>(mySketch, end = [x, y])</code>
+        <code><a href="">line</a>(mySketch, endAbsolute = [x, y])</code>
+        <code><a href="">xLine</a>(mySketch, length = 3) // Or yLine</code>
+        <code><a href="">xLine</a>(mySketch, endAbsolute = 3)</code>
+        <code><a href="">tangentialArc</a>(mySketch, end = [x, y]) // Or endAbsolute</code>
+        <code><a href="">close</a>(mySketch)</code>
+        <code><a href="">circle</a>(mySketch, center = [0, 0], diameter = 4) // or radius</code>
+        <code><a href="">subtract2d</a>(mySketch, tool = holeShapeSketch)</code>
       </article>
       <article>
-        <h2>3D</h2>
-        <code><a href="">sphere</a>(radius | d=diameter)</code>
-        <code><a href="">cube</a>(size, center)</code>
-        <code><a href="">cube</a>([width,depth,height], center)</code>
-        <code><a href="">cylinder</a>(h,r|d,center)</code>
-        <code><a href="">cylinder</a>(h,r1|d1,r2|d2,center)</code>
-        <code><a href="">polyhedron</a>(points, faces, convexity)</code>
-        <code><a href="">import</a>("&hellip;.<span class="tooltip">ext<span class="tooltiptext">formats: STL|OFF|AMF|3MF</span></span>", convexity)</code>
-        <code><a href="">linear_extrude</a>(height,center,convexity,twist,slices)</code>
-        <code><a href="">rotate_extrude</a>(angle,convexity)</code>
-        <code><a href="">surface</a>(file = "&hellip;.<span class="tooltip">ext<span class="tooltiptext">formats: DAT|PNG</span></span>",center,convexity)</code>
+        <h2>2D to 3D</h2>
+        <code><a href="">extrude</a>(mySketch, length = 4, method = MERGE | NEW)</code>
+        <code><a href="">extrude</a>(mySketch, to = endExtrudeAtThis)</code>
+        <code><a href="">sweep</a>(mySketch, path = myPath)</code>
+        <code><a href="">loft</a>([sketch1, sketch2])</code>
       </article>
       <article>
-        <h2>Transformations</h2>
-        <code><a href="">translate</a>([x,y,z])</code>
-        <code><a href="">rotate</a>([x,y,z])</code>
-        <code><a href="">rotate</a>(a, [x,y,z])</code>
-        <code><a href="">scale</a>([x,y,z])</code>
-        <code><a href="">resize</a>([x,y,z],auto,convexity)</code>
-        <code><a href="">mirror</a>([x,y,z])</code>
-        <code><a href="">multmatrix</a>(m)</code>
-        <code><a href="">color</a>("colorname",alpha)</code>
-        <code><a href="">color</a>("#<span class="tooltip">hexvalue<span class="tooltiptext">#rgb|#rgba|#rrggbb|#rrggbbaa</span></span>")</code>
-        <code><a href="">color</a>([r,g,b,a])</code>
-        <code><a href="">offset</a>(r|delta,chamfer)</code>
-        <code><a href="">hull</a>()</code>
-        <code><a href="">minkowski</a>(convexity)</code>
+        <h2>Modifying 3Ds</h2>
+        <code><a href="">appearance</a>(color = "#00ff00")</code>
+        <code><a href="">translate</a>(x = 1.3, z = 2.2)</code>
+        <code><a href="">scale</a>(y = 0.5, z = 2)</code>
+        <code><a href="">rotate</a>(roll = 10deg, pitch = 10deg, yaw = 5deg)</code>
+        <code><a href="">rotate</a>(axis = Z, angle = 45deg)</code>
+        <code><a href="">clone</a>(mySolid)</code>
+        <code><a href="">fillet</a>(mySolid, radius = 5, tags = [taggedEdge])</code>
+        <code><a href="">chamfer</a>(mySolid, radius = 5, tags = [taggedEdge])</code>
+        <code><a href="">union</a>([solidA, solidB])</code>
+        <code><a href="">intersection</a>([solidA, solidB])</code>
+        <code><a href="">subtract</a>(cube, tools = [myHole])</code>
+      </article>
+      <article>
+        <h2>Edges</h2>
+        <p>Tag an edge (becomes a tagged face if extruded). Works on all lines</p>
+        <code><a href="">line</a>(end = [3, 4], tag = $myEdge)</code>
+        <code><a href="">chamfer</a>(length = 1, tags = [a], tag = $newFace)</code>
+        <p>Use a tagged edge:</p>
+        <code><a href="">getPreviousAdjacentEdge</a>(myEdge)</code>
+        <code><a href="">getNextAdjacentEdge</a>(myEdge)</code>
+        <code><a href="">getOppositeEdge</a>(myEdge)</code>
+        <code><a href="">startSketchOn</a>(mySolid, face = myEdge)</code>
+        <code><a href="">segLen</a>(myEdge)</code>
+        <code><a href="">segStart</a>(myEdge)</code>
+        <code><a href="">segEnd</a>(myEdge)</code>
+        <code><a href="">segAng</a>(myEdge)</code>
+        <code><a href="">getCommonEdge</a>(faces = [myEdge, myEdge2])</code>
+        <p>(all extrusions have standard tags START and END)</p>
+      </article>
+      <article>
+        <h2>Patterns</h2>
+        <code><a href="">patternLinear3d</a>(instances = 4, distance = 10, axis = X)</code>
+        <code><a href="">patternCircular3d</a>(instances = 4, center = [0, 0, 0])</code>
+        <code><a href="">patternLinear2d</a>(instances = 4, distance = 10, axis = X)</code>
+        <code><a href="">patternCircular2d</a>(instances = 4, center = [0, 0])</code>
+        <code><a href="">patternTransform</a>(instances = n, transform = fn(@i) { return { translate = i * 5}})</code>
       </article>
     </section>
     <section>
       <article>
-        <h2>Lists</h2>
-        <dl>
-          <dt><code><a href="">list = [&hellip;, &hellip;, &hellip;];</a></code></dt>
-          <dd>&nbsp;&nbsp;create a list</dd>
-          <dt><code><a href="">var = list[2];</a></code></dt>
-          <dd>&nbsp;&nbsp;index a list (from 0)</dd>
-          <dt><code><a href="">var = list.z;</a></code></dt>
-          <dd>&nbsp;&nbsp;dot notation indexing (x/y/z)</dd>
-        </dl>
-      </article>
-      <article>
-        <h2>Boolean operations</h2>
-        <code><a href="">union</a>()</code>
-        <code><a href="">difference</a>()</code>
-        <code><a href="">intersection</a>()</code>
-      </article>
-      <article>
-        <h2>List Comprehensions</h2>
-        <code><a href="">Generate</a> [ for (i = <i>range</i>|<i>list</i>) i ]</code>
-        <code><a href="">Generate</a> [ for (<i>init</i>;<i>condition</i>;<i>next</i>) i ]</code>
-        <code><a href="">Flatten</a> [ each i ]</code>
-        <code><a href="">Conditions</a> [ for (i = &hellip;) if (condition(i)) i ] </code>
-        <code><a href="">Conditions</a> [ for (i = &hellip;) if (condition(i)) x else y ] </code>
-        <code><a href="">Assignments</a> [ for (i = &hellip;) let (assignments) a ] </code>
-      </article>
-      <article>
-        <h2>Flow Control</h2>
-        <code><a href="">for</a> (i = [<span>start</span>:<span>end</span>]) { &hellip; }</code>
-        <code><a href="">for</a> (i = [<span>start</span>:<span>step</span>:<span>end</span>]) { &hellip; }</code>
-        <code><a href="">for</a> (i = [&hellip;,&hellip;,&hellip;]) { &hellip; }</code>
-        <code><a href="">for</a> (i = &hellip;, j = &hellip;, &hellip;) { &hellip; }</code>
-        <code><a href="">intersection_for</a>(i = [<span>start</span>:<span>end</span>]) { &hellip; }</code>
-        <code><a href="">intersection_for</a>(i = [<span>start</span>:<span>step</span>:<span>end</span>]) { &hellip; }</code>
-        <code><a href="">intersection_for</a>(i = [&hellip;,&hellip;,&hellip;]) { &hellip; }</code>
-        <code><a href="">if</a> (&hellip;) { &hellip; }</code>
-        <code><a href="">let</a> (&hellip;) { &hellip; }</code>
-      </article>
-      <article>
-        <h2>Type test functions</h2>
-        <code><a href="">is_undef</a></code>
-        <code><a href="">is_bool</a></code>
-        <code><a href="">is_num</a></code>
-        <code><a href="">is_string</a></code>
-        <code><a href="">is_list</a></code>
-        <code><a href="">is_function</a></code>
-      </article>
-      <article>
-        <h2>Other</h2>
-        <code><a href="">echo</a>(&hellip;)</code>
-        <code><a href="">render</a>(convexity)</code>
-        <code><a href="">children</a>([idx])</code>
-        <code><a href="">assert</a>(condition, message)</code>
-        <s><code><a href="">assign</a> (&hellip;) { &hellip; }</code></s>
+        <h2>Array</h2>
+        <code>myArr = [1..3]</code>
+        <code>myArr = [1..<4]</code>
+        <code>myArr = [1, 2, 3]</code>
+        <code>map(myArr, fn(@x) { return x * x })</code>
+        <code>sum = <a href="">reduce</a>(myArr, initial = 0, f = fn(@i, acc) { return i + acc }) </code>
       </article>
     </section>
 
     <section>
       <article>
-        <h2>Functions</h2>
-        <code><a href="">concat</a></code>
-        <code><a href="">lookup</a></code>
-        <code><a href="">str</a></code>
-        <code><a href="">chr</a></code>
-        <code><a href="">ord</a></code>
-        <code><a href="">search</a></code>
-        <code><a href="">version</a></code>
-        <code><a href="">version_num</a></code>
-        <code><a href="">parent_module</a>(idx)</code>
+        <h2>Units</h2>
+        <code>dist = 45cm - 2in</code>
+        <code>ang = 45deg - 2rad</code>
+        <p>Converts x into mm</p>
+        <code>fn f(x: number(mm)): number(in)</code>
       </article>
       <article>
-        <h2>Mathematical</h2>
-        <code><a href="">abs</a></code>
-        <code><a href="">sign</a></code>
-        <code><a href="">sin</a></code>
-        <code><a href="">cos</a></code>
-        <code><a href="">tan</a></code>
-        <code><a href="">acos</a></code>
-        <code><a href="">asin</a></code>
-        <code><a href="">atan</a></code>
-        <code><a href="">atan2</a></code>
-        <code><a href="">floor</a></code>
-        <code><a href="">round</a></code>
-        <code><a href="">ceil</a></code>
-        <code><a href="">ln</a></code>
-        <code><a href="">len</a></code>
-        <code><a href="">let</a></code>
-        <code><a href="">log</a></code>
-        <code><a href="">pow</a></code>
-        <code><a href="">sqrt</a></code>
-        <code><a href="">exp</a></code>
-        <code><a href="">rands</a></code>
-        <code><a href="">min</a></code>
-        <code><a href="">max</a></code>
-        <code><a href="">norm</a></code>
-        <code><a href="">cross</a></code>
+        <h2>Modules</h2>
+        <code>import wheelDepth, wheelDiameter from "car_constants.kcl"</code>
+        <code>export wheelDepth = 2cm</code>
       </article>
     </section>
             
@@ -197,13 +144,13 @@
     <section>
       <article class="info">
           <em>Links:</em>
-          <a href="https://openscad.org/" target="_blank">Official website</a>
-          | <a href="https://github.com/openscad/openscad" target="_blank">Code</a>
-          | <a href="https://github.com/openscad/openscad/issues" target="_blank">Issues</a>
-          | <a href="" target="_blank">Manual</a>
-          | <a href="https://github.com/openscad/MCAD" target="_blank">MCAD library</a>
-          | <a href="https://openscad.org/community.html#forum" target="_blank">Mailing list</a>
-          | <a href="http://fablabamersfoort.nl/book/openscad" target="_blank">Other links</a>
+          <a href="https://kcl-book.zoo.dev" target="_blank">KCL book</a>
+          | <a href="https://zoo.dev/design-studio" target="_blank">Zoo Design Studio</a>
+          | <a href="https://zoo.dev/docs/kcl-lang" target="_blank">Language reference</a>
+          | <a href="https://zoo.dev/docs/kcl-samples" target="_blank">Sample models</a>
+          | <a href="https://github.com/KittyCAD/modeling-app/tree/main/rust/kcl-lib" target="_blank">GitHub</a>
+          | <a href="https://github.com/KittyCAD/tree-sitter-kcl" target="_blank">Treesitter</a>
+          | <a href="https://github.com/KittyCAD/modeling-app/tree/main/rust/kcl-language-server" target="_blank">LSP</a>
       </article>
     </section>
   </section>
