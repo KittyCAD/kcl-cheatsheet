@@ -15,8 +15,7 @@
 </head>
 <body>
   <header>
-    <h1 class="title" style="position:relative;"><span class="green">KCL</span></h1>
-    <h2>v2021.01</h2>
+    <h1 class="title" style="position:relative;"><span class="green">KCL: KittyCAD Language</span></h1>
   </header>
   <section>
     <section>
@@ -26,8 +25,7 @@
         <code><a href="">var</a> = if cond { value_if_true } else { value_if_false }</code>
         <code><a href="https://zoo.dev/docs/kcl-book/declaring_functions.html#function-declaration">fn</a> myFunction(@i, x, y?) { return x }</code>
         <code><a href="https://zoo.dev/docs/kcl-book/declaring_functions.html#function-declaration">fn</a> myFunction(x: string, y?: string) { return x }</code>
-        <code>x <a href="https://zoo.dev/docs/kcl-book/pipelines.html">|></a> f() // Equivalent to f(x)</code>
-        <code>x <a href="https://zoo.dev/docs/kcl-book/pipelines.html">|></a> f() |> g() // Equivalent to g(f(x))</code>
+        <code>x <a href="https://zoo.dev/docs/kcl-book/pipelines.html">|></a> f() |> g() // Same as g(f(x))</code>
       </article>
       <article>
         <h2>Operators</h2>
@@ -48,14 +46,22 @@
           <dt><code><a href="">!b</a></code></dt> <dd>Logical Not</dd>
         </dl>
       </article>
+      <article>
+        <h2>Arrays</h2>
+        <code>myArr = [1..3]</code>
+        <code>myArr = [1..<4]</code>
+        <code>myArr = [1, 2, 3]</code>
+        <code>map(myArr, fn(@x) { return x * x })</code>
+        <code>sum = <a href="">reduce</a>(myArr, initial = 0, f = fn(@i, acc) { return i + acc }) </code>
+      </article>
     </section>
     <section>
       <article>
         <h2>2D</h2>
-        <p>Start or extend a sketch</p>
         <code><a href="">startSketchOn</a>(XZ)</code>
         <code><a href="">startSketchOn</a>(mySolid, face = taggedFace)</code>
         <code><a href="">startProfile</a>(at = [0, 0])</code>
+        <p>Add a line to a sketch:</p>
         <code><a href="">line</a>(mySketch, end = [x, y])</code>
         <code><a href="">line</a>(mySketch, end = [x, y])</code>
         <code><a href="">line</a>(mySketch, endAbsolute = [x, y])</code>
@@ -63,6 +69,7 @@
         <code><a href="">xLine</a>(mySketch, endAbsolute = 3)</code>
         <code><a href="">tangentialArc</a>(mySketch, end = [x, y]) // Or endAbsolute</code>
         <code><a href="">close</a>(mySketch)</code>
+        <p>Other:</p>
         <code><a href="">circle</a>(mySketch, center = [0, 0], diameter = 4) // or radius</code>
         <code><a href="">subtract2d</a>(mySketch, tool = holeShapeSketch)</code>
       </article>
@@ -74,24 +81,29 @@
         <code><a href="">loft</a>([sketch1, sketch2])</code>
       </article>
       <article>
-        <h2>Modifying 3Ds</h2>
-        <code><a href="">appearance</a>(color = "#00ff00")</code>
-        <code><a href="">translate</a>(x = 1.3, z = 2.2)</code>
-        <code><a href="">scale</a>(y = 0.5, z = 2)</code>
-        <code><a href="">rotate</a>(roll = 10deg, pitch = 10deg, yaw = 5deg)</code>
-        <code><a href="">rotate</a>(axis = Z, angle = 45deg)</code>
+        <h2>Transform 3Ds</h2>
+        <code><a href="">appearance</a>(mySolid, color = "#00ff00")</code>
+        <code><a href="">translate</a>(mySolid, x = 1.3, z = 2.2)</code>
+        <code><a href="">scale</a>(mySolid, y = 0.5, z = 2)</code>
+        <code><a href="">rotate</a>(mySolid, roll = 10deg, pitch = 10deg, yaw = 5deg)</code>
+        <code><a href="">rotate</a>(mySolid, axis = Z, angle = 45deg)</code>
         <code><a href="">clone</a>(mySolid)</code>
         <code><a href="">fillet</a>(mySolid, radius = 5, tags = [taggedEdge])</code>
         <code><a href="">chamfer</a>(mySolid, radius = 5, tags = [taggedEdge])</code>
-        <code><a href="">union</a>([solidA, solidB])</code>
+        <code><a href="">union</a>([mySolid, mySolid2])</code>
         <code><a href="">intersection</a>([solidA, solidB])</code>
         <code><a href="">subtract</a>(cube, tools = [myHole])</code>
       </article>
+    </section>
+    <section>
       <article>
         <h2>Edges</h2>
-        <p>Tag an edge (becomes a tagged face if extruded). Works on all lines</p>
+        <p>Tag an edge (becomes a tagged face if extruded)</p>
+        <p>Works on all lines, arcs, etc</p>
         <code><a href="">line</a>(end = [3, 4], tag = $myEdge)</code>
+        <p>Tag a face</p>
         <code><a href="">chamfer</a>(length = 1, tags = [a], tag = $newFace)</code>
+        <code><a href="">extrude</a>(length = 1, tagEnd = $newFace)</code>
         <p>Use a tagged edge:</p>
         <code><a href="">getPreviousAdjacentEdge</a>(myEdge)</code>
         <code><a href="">getNextAdjacentEdge</a>(myEdge)</code>
@@ -113,17 +125,6 @@
         <code><a href="">patternTransform</a>(instances = n, transform = fn(@i) { return { translate = i * 5}})</code>
       </article>
     </section>
-    <section>
-      <article>
-        <h2>Array</h2>
-        <code>myArr = [1..3]</code>
-        <code>myArr = [1..<4]</code>
-        <code>myArr = [1, 2, 3]</code>
-        <code>map(myArr, fn(@x) { return x * x })</code>
-        <code>sum = <a href="">reduce</a>(myArr, initial = 0, f = fn(@i, acc) { return i + acc }) </code>
-      </article>
-    </section>
-
     <section>
       <article>
         <h2>Units</h2>
