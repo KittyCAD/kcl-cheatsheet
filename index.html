@@ -22,9 +22,9 @@
       <article>
         <h2>Syntax</h2>
         <code><a href="https://zoo.dev/docs/kcl-book/variables.html">var</a> = value;</code>
-        <code><a href="">var</a> = if cond { value_if_true } else { value_if_false }</code>
+        <code><a href="">var</a> = if cond { 1 } else { 2 }</code>
         <code><a href="https://zoo.dev/docs/kcl-book/declaring_functions.html#function-declaration">fn</a> myFunction(@i, x, y?) { return x }</code>
-        <code><a href="https://zoo.dev/docs/kcl-lang/functions">fn</a> myFunction(x: string, y?: string) { return x }</code>
+        <code><a href="https://zoo.dev/docs/kcl-lang/functions">fn</a> myFunction(x: string, y?: string) {}</code>
         <code>x <a href="https://zoo.dev/docs/kcl-book/pipelines.html">|></a> f() |> g() // Same as g(f(x))</code>
       </article>
       <article>
@@ -51,8 +51,8 @@
         <code><a href="https://zoo.dev/docs/kcl-lang/arrays">myArr</a> = [1..3]</code>
         <code><a href="https://zoo.dev/docs/kcl-lang/arrays">myArr</a> = [1..<4]</code>
         <code><a href="https://zoo.dev/docs/kcl-lang/arrays">myArr</a> = [1, 2, 3]</code>
-        <code>map(myArr, fn(@x) { return x * x })</code>
-        <code>sum = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-reduce">reduce</a>(<br>myArr,<br>initial = 0,<br>f = fn(@i, acc) {return i + acc}<br>) </code>
+        <code>squared = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-map">map</a>(myArr, fn(@x) { return x * x })</code>
+        <code>sum = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-reduce">reduce</a>(<br>&#8194;&#8194;myArr,<br>&#8194;&#8194;initial = 0,<br>&#8194;&#8194;f = fn(@i, acc) {return i + acc}<br>) </code>
       </article>
     </section>
     <section>
@@ -144,7 +144,7 @@
     
     <section>
       <article class="info">
-          <em>Links:</em>
+          Links:
           <a href="https://kcl-book.zoo.dev" target="_blank">KCL book</a>
           | <a href="https://zoo.dev/design-studio" target="_blank">Zoo Design Studio</a>
           | <a href="https://zoo.dev/docs/kcl-lang" target="_blank">Language reference</a>
@@ -158,7 +158,7 @@
 
   <footer>
     <a href="https://github.com/KittyCAD/kcl-cheatsheet/blob/main/index.html" target="_blank">Edit me on GitHub!</a><br>
-    Full credit to the <a href="https://openscad.org/cheatsheet/" target="_blank">OpenSCAD cheat sheet for inspiration and design</a>
+    Full credit to the <a href="https://openscad.org/cheatsheet/" target="_blank">OpenSCAD cheat sheet</a> for inspiration and design
   </footer>
 </body>
 </html>
