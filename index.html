@@ -52,12 +52,12 @@
         <code><a href="https://zoo.dev/docs/kcl-lang/arrays">myArr</a> = [1..<4]</code>
         <code><a href="https://zoo.dev/docs/kcl-lang/arrays">myArr</a> = [1, 2, 3]</code>
         <code>squared = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-map">map</a>(myArr, fn(@x) { return x * x })</code>
-        <code>sum = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-reduce">reduce</a>(<br>&#8194;&#8194;myArr,<br>&#8194;&#8194;initial = 0,<br>&#8194;&#8194;f = fn(@i, acc) {return i + acc}<br>) </code>
+        <code>sum = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-reduce">reduce</a>(<br>&#8194;&#8194;myArr,<br>&#8194;&#8194;initial = 0,<br>&#8194;&#8194;f = fn(@i, accum) {return i + accum}<br>) </code>
       </article>
       <article>
         <h2>Math</h2>
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-sin">sin</a>(10deg), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-cos">cos</a>(1rad), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-tan">tan</a>(x)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-asin">asin</a>(10deg), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-acos">acos</a>(1rad), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-atan">atan</a>(x), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-atan2">atan2</a>(x)</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-asin">asin</a>(10deg), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-acos">acos</a>(1rad), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-atan">atan</a>(x), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-atan2">atan2</a>(y, x)</code>
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-polar">polar</a>(angle = 9deg, length = 5)</code>
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-rem">rem</a>(7, divisor = 4)</code>
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-assert">assert</a>(x, isEqualTo = 3)</code>
@@ -74,7 +74,7 @@
         <h2>2D</h2>
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-startSketchOn">startSketchOn</a>(XZ)</code>
         <code><a href="https://zoo.dev/docs/kcl-book/sketch_on_face.html">startSketchOn</a>(mySolid, face = taggedFace)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-startProfile">startProfile</a>(at = [0, 0])</code>
+        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-startProfile">startProfile</a>(mySketch, at = [0, 0])</code>
         <p>Add a line to a sketch:</p>
         <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-line">line</a>(mySketch, end = [x, y])</code>
         <code><a href="">line</a>(mySketch, endAbsolute = [x, y])</code>
