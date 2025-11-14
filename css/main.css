@@ -1,9 +1,13 @@
 body {
 	font-family: "UbuntuMonoRegular", "Ubuntu Mono", 'courier new', monospace, sans-serif;
 	font-size: 100%;
-	line-height: 1em;
+	line-height: 1.2rem;
 	color: #999;
 	padding: 0.6em;
+}
+
+comment {
+	color: #999;
 }
 
 a {
@@ -23,6 +27,19 @@ header h1 {
 	display: inline-block;
 	margin-right: 1ex;
 }
+
+h3 {
+  color: #79A22E;
+	margin: 0.6em 0 0.6em 0;
+}
+
+table > tbody > tr > td {
+  padding-right: 1ch;
+}
+table > tbody > tr > td:last-of-type {
+  padding-right: 0;
+}
+
 
 /* colour the header 'Open' & 'SCAD' and make bolder and chunky
 like the cornfield default scheme from colormap.cc
@@ -89,7 +106,6 @@ code {
 	font-family: "UbuntuMonoRegular", "Ubuntu Mono", 'courier new', monospace, sans-serif;
 	color: #000;
 	display: block;
-	margin: 0 0 0.5em 0;
 }
 
 code span {
@@ -107,7 +123,6 @@ dt {
 
 dd {
 	margin: 0 0 .5em 4em;
-    color: #000
 }
 
 ul {
