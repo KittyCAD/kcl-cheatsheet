@@ -6,6 +6,10 @@ body {
 	padding: 0.6em;
 }
 
+.indent {
+	text-indent: 2ch;
+}
+
 comment {
 	color: #999;
 }
