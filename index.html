@@ -90,8 +90,9 @@
           </section>
           <article>
             <h2>Profiles</h2>
-            <code><strong>plane = </strong><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-startSketchOn">startSketchOn</a>(XZ)</code>
-            <code><comment>plane = </comment><a href="https://zoo.dev/docs/kcl-book/sketch_on_face.html">startSketchOn</a>(solid, face = taggedFace)</code>
+            <code><strong>plane = </strong></code>
+            <code class="indent"><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-startSketchOn">startSketchOn</a>(XZ)</code>
+            <code class="indent"><a href="https://zoo.dev/docs/kcl-book/sketch_on_face.html">startSketchOn</a>(solid, face = taggedFace)</code>
             <code><strong>profile = </strong><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-startProfile">startProfile</a>(plane, at = [0, 0])</code>
 
             <h3>Sketching</h3>
@@ -122,7 +123,7 @@
             <code>line(end = [3, 4], <a href="">tag</a> = $edge)</code>
             <code>chamfer(length = 1, tags = [a], tag = $newFace)</code>
             <code>extrude(length = 1, tagEnd = $newFace)</code>
-            <comment style="margin-left: 3ch;">⬑ creates implicit START and END face tags</comment>
+            <comment class="indent">// note: creates implicit START and END face tags</comment>
             <h3>Edge selecting</h3>
             <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-getPreviousAdjacentEdge">getPreviousAdjacentEdge</a>(tag)</code>
             <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-getNextAdjacentEdge">getNextAdjacentEdge</a>(tag)</code>
@@ -138,11 +139,11 @@
         <div style="display: flex; flex-direction: column;">
           <article>
             <h2>Profiles to Solids</h2>
-            <code><strong>solid = </strong><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-extrude">extrude</a>(profile, length = 4, method = MERGE | NEW)</code>
-            <code><comment>solid = ...</comment></code>
-            <code><a href="">extrude</a>(profile, to = endExtrudeAtThis)</code>
-            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-sweep">sweep</a>(profile, path = path)</code>
-            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-loft">loft</a>([profile1, profile2])</code>
+            <code><strong>solid = </strong></code>
+            <code class="indent"><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-extrude">extrude</a>(profile, length = 4, method = MERGE | NEW)</code>
+            <code class="indent"><a href="">extrude</a>(profile, to = endExtrudeAtThis)</code>
+            <code class="indent"><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-sweep">sweep</a>(profile, path = path)</code>
+            <code class="indent"><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-loft">loft</a>([profile1, profile2])</code>
           </article>
           <article>
             <h2>Solids</h2>
