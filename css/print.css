@@ -4,6 +4,7 @@
 }
 body {
 	font-size: 55%;
+	line-height: 0.6rem;
 }
 .fork {
 	display: none;

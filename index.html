@@ -18,143 +18,169 @@
     <h1 class="title" style="position:relative;"><span class="green">KCL: KittyCAD Language</span></h1>
   </header>
   <section>
-    <section>
-      <article>
-        <h2>Syntax</h2>
-        <code><a href="https://zoo.dev/docs/kcl-book/variables.html">var</a> = value;</code>
-        <code><a href="">var</a> = if cond { 1 } else { 2 }</code>
-        <code><a href="https://zoo.dev/docs/kcl-book/declaring_functions.html#function-declaration">fn</a> myFunction(@i, x, y?) { return x }</code>
-        <code><a href="https://zoo.dev/docs/kcl-lang/functions">fn</a> myFunction(x: string, y?: string) {}</code>
-        <code>x <a href="https://zoo.dev/docs/kcl-book/pipelines.html">|></a> f() |> g() // Same as g(f(x))</code>
-      </article>
-      <article>
-        <h2>Operators</h2>
-        <dl>
-          <dt><code>n + m</code></dt><dd>Addition, string concatenation</dd>
-          <dt><code>n - m</code></dt><dd>Subtraction</dd>
-          <dt><code>-m</code></dt> <dd>Negative</dd>
-          <dt><code>n * m</code></dt><dd>Multiplication</dd>
-          <dt><code>n / m</code></dt><dd>Division</dd>
-          <dt><code>n < m</code></dt><dd>Less Than</dd>
-          <dt><code>n <= m</code></dt><dd>Less or Equal</dd>
-          <dt><code>b == c</code></dt><dd>Equal</dd>
-          <dt><code>b != c</code></dt><dd>Not Equal</dd>
-          <dt><code>n >= m</code></dt><dd>Greater or Equal</dd>
-          <dt><code>n > m</code></dt><dd>Greater Than</dd>
-          <dt><code>b & c</code></dt> <dd>Logical And</dd>
-          <dt><code>b | c</code></dt> <dd>Logical Or</dd>
-          <dt><code>!b</code></dt> <dd>Logical Not</dd>
-        </dl>
-      </article>
-      <article>
-        <h2>Arrays</h2>
-        <code><a href="https://zoo.dev/docs/kcl-lang/arrays">myArr</a> = [1..3]</code>
-        <code><a href="https://zoo.dev/docs/kcl-lang/arrays">myArr</a> = [1..<4]</code>
-        <code><a href="https://zoo.dev/docs/kcl-lang/arrays">myArr</a> = [1, 2, 3]</code>
-        <code>squared = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-map">map</a>(myArr, fn(@x) { return x * x })</code>
-        <code>sum = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-reduce">reduce</a>(<br>&#8194;&#8194;myArr,<br>&#8194;&#8194;initial = 0,<br>&#8194;&#8194;f = fn(@i, accum) {return i + accum}<br>) </code>
-      </article>
-      <article>
-        <h2>Math</h2>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-sin">sin</a>(10deg), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-cos">cos</a>(1rad), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-tan">tan</a>(x)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-asin">asin</a>(10deg), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-acos">acos</a>(1rad), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-atan">atan</a>(x), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-atan2">atan2</a>(y, x)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-polar">polar</a>(angle = 9deg, length = 5)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-rem">rem</a>(7, divisor = 4)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-assert">assert</a>(x, isEqualTo = 3)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-sqrt">sqrt</a>(4)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-abs">abs</a>(-4)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-round">round</a>(4.1), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-floor">floor</a>(4.1), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-ceil">ceil</a>(4.1)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-min">min</a>([1, 2, 3]), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-max">max</a>([1, 2, 3])</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-pow">pow</a>(5, exp = 2), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-log">log</a>(100, base = 5)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-log10">log10</a>(100), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-log2">log2</a>(128), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-ln">ln</a>(100)</code>
-      </article>
-    </section>
-    <section>
-      <article>
-        <h2>2D</h2>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-startSketchOn">startSketchOn</a>(XZ)</code>
-        <code><a href="https://zoo.dev/docs/kcl-book/sketch_on_face.html">startSketchOn</a>(mySolid, face = taggedFace)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-startProfile">startProfile</a>(mySketch, at = [0, 0])</code>
-        <p>Add a line to a sketch:</p>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-line">line</a>(mySketch, end = [x, y])</code>
-        <code><a href="">line</a>(mySketch, endAbsolute = [x, y])</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-line">xLine</a>(mySketch, length = 3) // Or yLine</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-xLine">xLine</a>(mySketch, endAbsolute = 3)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-tangentialArc">tangentialArc</a>(mySketch, end = [x, y])</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-close">close</a>(mySketch)</code>
-        <p>Other:</p>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-circle">circle</a>(mySketch, center = [0, 0], diameter = 4)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-subtract2d">subtract2d</a>(mySketch, tool = holeShapeSketch)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-mirror2d">mirror2d</a>(unclosedPath, axis = Y)</code>
-      </article>
-      <article>
-        <h2>2D to 3D</h2>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-extrude">extrude</a>(mySketch, length = 4, method = MERGE | NEW)</code>
-        <code><a href="">extrude</a>(mySketch, to = endExtrudeAtThis)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-sweep">sweep</a>(mySketch, path = myPath)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-loft">loft</a>([sketch1, sketch2])</code>
-      </article>
-      <article>
-        <h2>Transform 3Ds</h2>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-appearance">appearance</a>(mySolid, color = "#00ff00")</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-translate">translate</a>(mySolid, x = 1.3, z = 2.2)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-scale">scale</a>(mySolid, y = 0.5, z = 2)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-rotate">rotate</a>(mySolid, roll = 5deg, pitch = 5deg, yaw = 5deg)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-rotate">rotate</a>(mySolid, axis = Z, angle = 45deg)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-clone">clone</a>(mySolid)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-fillet">fillet</a>(mySolid, radius = 5, tags = [taggedEdge])</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-chamfer">chamfer</a>(mySolid, radius = 5, tags = [taggedEdge])</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-union">union</a>([mySolid, mySolid2])</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-intersect">intersect</a>([solidA, solidB])</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-subtract">subtract</a>(cube, tools = [myHole])</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-shell">shell</a>(cube, faces = [taggedFace], thickness = 1)</code>
-      </article>
-    </section>
-    <section>
-      <article>
-        <h2>Edges</h2>
-        <p>Tag an edge (becomes a tagged face if extruded)</p>
-        <p>Works on all lines, arcs, etc</p>
-        <code><a href="">line</a>(end = [3, 4], tag = $myEdge)</code>
-        <p>Tag a face</p>
-        <code><a href="">chamfer</a>(length = 1, tags = [a], tag = $newFace)</code>
-        <code><a href="">extrude</a>(length = 1, tagEnd = $newFace)</code>
-        <p>Use a tagged edge:</p>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-getPreviousAdjacentEdge">getPreviousAdjacentEdge</a>(myEdge)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-getNextAdjacentEdge">getNextAdjacentEdge</a>(myEdge)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-getOppositeEdge">getOppositeEdge</a>(myEdge)</code>
-        <code><a href="">startSketchOn</a>(mySolid, face = myEdge)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-segLen">segLen</a>(myEdge)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-segStart">segStart</a>(myEdge)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-segEnd">segEnd</a>(myEdge)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-segAng">segAng</a>(myEdge)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-getCommonEdge">getCommonEdge</a>(faces = [myEdge, myEdge2])</code>
-        <p>(all extrusions have standard tags START and END)</p>
-      </article>
-      <article>
-        <h2>Patterns</h2>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-patternLinear3d">patternLinear3d</a>(instances = 4, distance = 10, axis = X)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-patternCircular3d">patternCircular3d</a>(instances = 4, center = [0, 0, 0])</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-patternLinear2d">patternLinear2d</a>(instances = 4, distance = 10, axis = X)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-patternCircular2d">patternCircular2d</a>(instances = 4, center = [0, 0])</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-patternTransform">patternTransform</a>(instances = n, transform = someFn)</code>
-        <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-patternTransform2d">patternTransform2d</a>(instances = n, transform = someFn)</code>
-      </article>
-    </section>
-    <section>
-      <article>
-        <h2>Units</h2>
-        <code>dist = 45<a href="https://zoo.dev/docs/kcl-lang/numeric">cm</a> - 2in</code>
-        <code>ang = 45deg - 2rad</code>
-        <p>Converts x into mm</p>
-        <code>fn f(x: number(mm)): number(in)</code>
-      </article>
-      <article>
-        <h2>Modules</h2>
-        <code><a href="https://zoo.dev/docs/kcl-book/modules.html#importing-and-exporting-specific-items">import</a> wheelDepth, wheelDiameter from "car.kcl"</code>
-        <code>export wheelDepth = 2cm</code>
-      </article>
-    </section>
+    <div style="display: flex;">
+      <section>
+        <article>
+          <h2>Syntax</h2>
+          <code><a href="https://zoo.dev/docs/kcl-book/variables.html">x</a> = value;</code>
+          <code><a href="">x</a> = if cond { 1 } else { 2 }</code>
+          <code><a href="https://zoo.dev/docs/kcl-book/declaring_functions.html#function-declaration">fn</a> function(@i, x, y?) { return x }</code>
+          <code><a href="https://zoo.dev/docs/kcl-lang/functions">fn</a> function(x: string, y?: string) {}</code>
+          <code>x <a href="https://zoo.dev/docs/kcl-book/pipelines.html">|></a> f() |> g() <comment>Same as g(f(x))</comment></code>
+        </article>
+        <article>
+          <h2>Operators</h2>
+          <table>
+            <tbody>
+              <tr><td><code>n + m</code></td><td><comment>add, string concat.</comment></td></tr>
+              <tr><td><code>n - m</code></td><td><comment>subtract</comment></td></tr>
+              <tr><td><code>-m</code></td><td><comment>negate</comment></td></tr>
+              <tr><td><code>n * m</code></td><td><comment>multiply</comment></td></tr>
+              <tr><td><code>n / m</code></td><td><comment>divide</comment></td></tr>
+              <tr><td><code>n < m</code></td><td><comment>less than</comment></td></tr>
+              <tr><td><code>n <= m</code></td><td><comment>less or equal</comment></td></tr>
+              <tr><td><code>b == c</code></td><td><comment>equal to</comment></td></tr>
+              <tr><td><code>b != c</code></td><td><comment>not equal</comment></td></tr>
+              <tr><td><code>n >= m</code></td><td><comment>greater or equal</comment></td></tr>
+              <tr><td><code>n > m</code></td><td><comment>greater than</comment></td></tr>
+              <tr><td><code>b & c</code></td><td><comment>logical and</comment></td></tr>
+              <tr><td><code>b | c</code></td><td><comment>logical or</comment></td></tr>
+              <tr><td><code>!b</code></td><td><comment>logical not</comment></td></tr>
+            </tbody>
+          </table>
+        </article>
+        <article>
+          <h2>Units</h2>
+          <code>dist = 45<a href="https://zoo.dev/docs/kcl-lang/numeric">cm</a> - 2in, ang = 45deg - 2rad</code>
+          <code>fn f(intoMm: <a href="">number(mm)</a>): number(in)</code>
+        </article>
+        <article>
+          <h2>Arrays</h2>
+          <code><a href="https://zoo.dev/docs/kcl-lang/arrays">arr</a> = [1, 2, 3], <a href="https://zoo.dev/docs/kcl-lang/arrays">arr</a> = [1..3], <a href="https://zoo.dev/docs/kcl-lang/arrays">arr</a> = [1..<4]</code>
+          <code>squared = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-map">map</a>(arr, fn(@x) { return x*x })</code>
+          <code>sum = <a href="https://zoo.dev/docs/kcl-std/functions/std-array-reduce">reduce</a>(<br>&#8194;&#8194;myArr,<br>&#8194;&#8194;initial = 0,<br>&#8194;&#8194;f = fn(@i, accum) {return i + accum}<br>) </code>
+        </article>
+        <article>
+          <h2>Math</h2>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-sin">sin</a>(10deg), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-cos">cos</a>(1rad), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-tan">tan</a>(x)</code>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-asin">asin</a>(10deg), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-acos">acos</a>(1rad), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-atan">atan</a>(x), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-atan2">atan2</a>(y, x)</code>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-polar">polar</a>(angle = 9deg, length = 5)</code>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-rem">rem</a>(7, divisor = 4)</code>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-assert">assert</a>(x, isEqualTo = 3)</code>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-sqrt">sqrt</a>(4)</code>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-abs">abs</a>(-4)</code>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-round">round</a>(4.1), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-floor">floor</a>(4.1), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-ceil">ceil</a>(4.1)</code>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-min">min</a>([1, 2, 3]), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-max">max</a>([1, 2, 3])</code>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-pow">pow</a>(5, exp = 2), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-log">log</a>(100, base = 5)</code>
+          <code><a href="https://zoo.dev/docs/kcl-std/functions/std-math-log10">log10</a>(100), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-log2">log2</a>(128), <a href="https://zoo.dev/docs/kcl-std/functions/std-math-ln">ln</a>(100)</code>
+        </article>
+      </section>
+      <section style="display: flex;">
+        <div style="display: flex; flex-direction: column;">
+          <section>
+            <article>
+              <h2>Modules</h2>
+              <code><a href="https://zoo.dev/docs/kcl-book/modules.html#importing-and-exporting-specific-items">import</a> wheelDepth, wheelDiameter from "car.kcl"</code>
+              <code>export wheelDepth = 2cm</code>
+            </article>
+            <article>
+              <h2>Other</h2>
+              <code><a href="https://zoo.dev/docs/kcl-std/functions/std-clone">clone</a>(solid)</code>
+            </article>
+          </section>
+          <article>
+            <h2>Profiles</h2>
+            <code><strong>plane = </strong><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-startSketchOn">startSketchOn</a>(XZ)</code>
+            <code><comment>plane = </comment><a href="https://zoo.dev/docs/kcl-book/sketch_on_face.html">startSketchOn</a>(solid, face = taggedFace)</code>
+            <code><strong>profile = </strong><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-startProfile">startProfile</a>(plane, at = [0, 0])</code>
+
+            <h3>Sketching</h3>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-line">line</a>(profile, end = [x, y])</code>
+            <code><a href="">line</a>(profile, endAbsolute = [x, y])</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-line">xLine</a>(profile, length = 3) // Or yLine</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-xLine">xLine</a>(profile, endAbsolute = 3)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-tangentialArc">tangentialArc</a>(profile, end = [x, y])</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-close">close</a>(profile)</code>
+            <h3>Pre-fabricated</h3>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-circle">circle</a>(profile, center = [0, 0], diameter = 4)</code>
+            <h3>Transforms</h3>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-translate">translate</a>(profile, x = 1.3, z = 2.2)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-scale">scale</a>(profile, y = 0.5, z = 2)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-rotate">rotate</a>(profile, roll = 5deg, pitch = 5deg, yaw = 5deg)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-rotate">rotate</a>(profile, axis = Z, angle = 45deg)</code>
+            <h3>Booleans</h3>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-subtract2d">subtract2d</a>(profile, tool = holeShapeSketch)</code>
+            <h3>Patterns</h3>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-patternLinear2d">patternLinear2d</a>(profile, instances, distance = 10, axis = X)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-patternCircular2d">patternCircular2d</a>(profile, instances, center = [0, 0])</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-patternTransform2d">patternTransform2d</a>(profile, instances, transform = someFn)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-mirror2d">mirror2d</a>(unclosedPath, axis = Y)</code>
+          </article>
+          <article>
+            <h2>Selections</h2>
+            <h3>Tagging</h3>
+            <code>line(end = [3, 4], <a href="">tag</a> = $edge)</code>
+            <code>chamfer(length = 1, tags = [a], tag = $newFace)</code>
+            <code>extrude(length = 1, tagEnd = $newFace)</code>
+            <comment style="margin-left: 3ch;">⬑ creates implicit START and END face tags</comment>
+            <h3>Edge selecting</h3>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-getPreviousAdjacentEdge">getPreviousAdjacentEdge</a>(tag)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-getNextAdjacentEdge">getNextAdjacentEdge</a>(tag)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-getOppositeEdge">getOppositeEdge</a>(tag)</code>
+            <code><a href="">startSketchOn</a>(solid, face = tag)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-segLen">segLen</a>(tag)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-segStart">segStart</a>(tag)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-segEnd">segEnd</a>(tag)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-segAng">segAng</a>(tag)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-getCommonEdge">getCommonEdge</a>(faces = [tag, tag2])</code>
+          </article>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <article>
+            <h2>Profiles to Solids</h2>
+            <code><strong>solid = </strong><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-extrude">extrude</a>(profile, length = 4, method = MERGE | NEW)</code>
+            <code><comment>solid = ...</comment></code>
+            <code><a href="">extrude</a>(profile, to = endExtrudeAtThis)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-sweep">sweep</a>(profile, path = path)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-sketch-loft">loft</a>([profile1, profile2])</code>
+          </article>
+          <article>
+            <h2>Solids</h2>
+            <h3>Transforms</h3>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-translate">translate</a>(solid, x = 1.3, z = 2.2)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-scale">scale</a>(solid, y = 0.5, z = 2)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-rotate">rotate</a>(solid, roll = 5deg, pitch = 5deg, yaw = 5deg)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-transform-rotate">rotate</a>(solid, axis = Z, angle = 45deg)</code>
+            <h3>Booleans</h3>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-union">union</a>([solid, solid2])</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-subtract">subtract</a>(cube, tools = [hole])</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-intersect">intersect</a>([solidA, solidB])</code>
+            <h3>Patterns</h3>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-patternLinear3d">patternLinear3d</a>(instances = 4, distance = 10, axis = X)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-patternCircular3d">patternCircular3d</a>(instances, center = [0, 0, 0])</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-patternTransform">patternTransform</a>(instances, transform = someFn)</code>
+            <h3>Modifiers</h3>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-shell">shell</a>(cube, faces = [taggedFace], thickness = 1)</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-fillet">fillet</a>(solid, radius = 5, tags = [taggedEdge])</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-chamfer">chamfer</a>(solid, radius = 5, tags = [taggedEdge])</code>
+            <code><a href="https://zoo.dev/docs/kcl-std/functions/std-solid-appearance">appearance</a>(solid, color = "#00ff00")</code>
+          </article>
+          <article>
+            <h2>Example</h2>
+            <pre><code>xy = startSketchOn(XY)
+    p = startProfile(xy, at = [0, 0])
+      |> xLine(length = 1.0mm)
+      |> yLine(length = 1.0mm)
+      |> line(endAbsolute = [
+        profileStartX(%),
+        profileStartY(%)
+      ])
+      |> close()
+    s = extrude(p, length=5cm)</code></pre>
+          </article>
+        </div>
+      </section>
+    </div>
             
     <br clear="all">
     
