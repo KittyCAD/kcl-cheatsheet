@@ -2,7 +2,7 @@
 
 This is a quick one-page reference for KCL, the KittyCAD Language for defining 3D CAD models.
 
-<a href="https://github.com/KittyCAD/kcl-cheatsheet/blob/main/KCL%20Cheatsheet.pdf"><img width="1162" height="992" alt="KCL Cheatsheet preview" src="KCL%20Cheatsheet.png" /></a>
+<a href="https://github.com/KittyCAD/kcl-cheatsheet/blob/main/KCL%20Cheatsheet.pdf"><img width="1584" height="1224" alt="KCL Cheatsheet preview" src="KCL%20Cheatsheet.png" /></a>
 
 View the PDF [here](https://github.com/KittyCAD/kcl-cheatsheet/blob/main/KCL%20Cheatsheet.pdf) or clone this repo and open index.html for a flexible webpage.
 
