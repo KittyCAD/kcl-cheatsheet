@@ -2,7 +2,7 @@
 
 This is a quick one-page reference for KCL, the KittyCAD Language for defining 3D CAD models.
 
-<a href="https://github.com/KittyCAD/kcl-cheatsheet/blob/main/KCL%20Cheatsheet.pdf"><img width="1162" height="992" alt="Screenshot 2025-11-17 at 11 26 25 AM" src="https://github.com/user-attachments/assets/41e5bdf2-3412-4e1d-9764-1ba09d4f44f0" /></a>
+<a href="https://github.com/KittyCAD/kcl-cheatsheet/blob/main/KCL%20Cheatsheet.pdf"><img width="1162" height="992" alt="KCL Cheatsheet preview" src="KCL%20Cheatsheet.png" /></a>
 
 View the PDF [here](https://github.com/KittyCAD/kcl-cheatsheet/blob/main/KCL%20Cheatsheet.pdf) or clone this repo and open index.html for a flexible webpage.
 
@@ -15,4 +15,3 @@ You might also be interested in:
 - The KCL [GitHub](https://github.com/KittyCAD/modeling-app/tree/main/rust/kcl-lib)
 - [Treesitter](https://github.com/KittyCAD/tree-sitter-kcl)
 - [LSP](https://github.com/KittyCAD/modeling-app/tree/main/rust/kcl-language-server)
-
